@@ -92,7 +92,7 @@ public class PlayerController : MonoBehaviour
         transform.eulerAngles += new Vector3(0, mouseDelta.x * lookSensitivity, 0);
     }
 
-    bool IsGrounded()
+    bool IsGrounded() // 레이케스트를 책상 다리처럼 만들어 사용
     {
         Ray[] rays = new Ray[4]
         {
@@ -113,7 +113,7 @@ public class PlayerController : MonoBehaviour
         return false;
     }
 
-    public void ToggleCursor(bool toggle)
+    public void ToggleCursor(bool toggle) // 마우스 숨기기
     {
         Cursor.lockState = toggle ? CursorLockMode.None : CursorLockMode.Locked;
         canLook = !toggle;

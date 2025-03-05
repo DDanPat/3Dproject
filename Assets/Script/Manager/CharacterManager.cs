@@ -23,11 +23,13 @@ public class CharacterManager : MonoBehaviour
 
     private void Awake()
     {
+        // _instance가 없으면 현재 오브젝트를 _instance로 설정하고 제거방지
         if (_instance == null)
         {
             _instance = this;
             DontDestroyOnLoad(gameObject);
         }
+        // _instance가 있으면 현제 오브젝트 제거
         else
         {
             if (_instance != null)

@@ -1,0 +1,47 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class PlayerCondition : MonoBehaviour
+{
+    public UICondition uiCondition;
+
+    Condition health { get { return uiCondition.health; } }
+    Condition hunger { get { return uiCondition.hunger; } }
+    Condition stamina { get { return uiCondition.stamina; } }
+
+    public float noHungerHealthDecay; // 배고픔이 0일때 사용할 값
+    public event Action onTakeDamage; // Damage를 받을 때 호출할 Action
+
+    private void Update()
+    {
+        hunger.Subtract(hunger.passiveValue * Time.deltaTime);
+        stamina.Add(stamina.passiveValue * Time.deltaTime);
+
+        if (hunger.curValue <= 0f)
+        {
+            health.Subtract(noHungerHealthDecay * Time.deltaTime);
+        }
+
+        if (health.curValue <= 0f)
+        {
+            Die();
+        }
+    }
+
+    public void Heal(float amount) // 회복 메서드
+    {
+        health.Add(amount);
+    }
+
+    public void Eat(float amount) // 음식 섭취 메서드
+    {
+        hunger.Add(amount);
+    }
+
+    public void Die()
+    {
+        Debug.Log("플레이어가 죽었다.");
+    }
+}
