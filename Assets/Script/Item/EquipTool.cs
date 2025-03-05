@@ -5,7 +5,7 @@ using UnityEngine;
 public class EquipTool : Equip
 {
     public float attackRate;
-    public bool attacking;
+    private bool attacking;
     public float attackDistance;
 
     [Header("Resource Gathering")]
@@ -14,4 +14,26 @@ public class EquipTool : Equip
     [Header("Combat")]
     public bool doesDealDamage;
     public int damage;
+
+    private Animator animator;
+
+    private void Start()
+    {
+        animator = GetComponent<Animator>();
+    }
+
+    public override void OnAttackInput()
+    {
+        if (!attacking)
+        {
+            attacking = true;
+            animator.SetTrigger("Attack");
+            Invoke("OnCanAttack", attackRate);
+        }
+    }
+
+    void OnCanAttack()
+    {
+        attacking = false;
+    }
 }
