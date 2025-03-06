@@ -135,4 +135,9 @@ public class PlayerController : MonoBehaviour
         Cursor.lockState = toggle? CursorLockMode.None : CursorLockMode.Locked;
         canLook = !toggle;
     }
+
+    public void JumpPad(float jumpValue)
+    {
+        _rigidbody.AddForce(Vector2.up * jumpValue, ForceMode.Impulse);
+    }
 }
