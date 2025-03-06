@@ -59,15 +59,17 @@ public class PlayerCondition : MonoBehaviour, IDamagable
         onTakeDamage?.Invoke();
     }
 
-    public bool UseStamina(float amount)
+    public void TakeBuff(float amount, float buffTime)
     {
-        if (stamina.curValue - amount < 0f)
-        {
-            return false;
-        }
-
-        stamina.Subtract(amount);
-        return true;
+        StartCoroutine(BuffTimer(buffTime));
     }
 
+    IEnumerator BuffTimer(float time)
+    {
+        CharacterManager.Instance.Player.controller.moveSpeed = 10;
+
+        yield return new WaitForSeconds(time);
+
+        CharacterManager.Instance.Player.controller.moveSpeed = 5;
+    }
 }

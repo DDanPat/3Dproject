@@ -33,7 +33,7 @@ public class UIInventory : MonoBehaviour
         controller = CharacterManager.Instance.Player.controller;
         condition = CharacterManager.Instance.Player.condition;
         dropPosition = CharacterManager.Instance.Player.dropPosition;
-
+        
         controller.inventory += Toggle;
         CharacterManager.Instance.Player.addItem += AddItem;
 
@@ -200,6 +200,16 @@ public class UIInventory : MonoBehaviour
                         break;
                 }
             }
+            for (int i = 0; i < selectedItem.buffs.Length; i++)
+            {
+                switch (selectedItem.buffs[i].type)
+                {
+                    case BuffType.Speed:
+                        //코루틴을 이용해서 일정 시간동안 스피드 증가
+                        condition.TakeBuff(selectedItem.buffs[i].value, selectedItem.buffTime);
+                        break;
+                }
+            }
             RemoveSelectedItem();
         }
     }
@@ -226,7 +236,7 @@ public class UIInventory : MonoBehaviour
 
     public void OnEquipButton()
     {
-        if (slots[selectedItemIndex].equipped)
+        if (slots[curEquipIndex].equipped)
         {
             UnEquip(curEquipIndex);
         }
@@ -253,4 +263,5 @@ public class UIInventory : MonoBehaviour
     {
         UnEquip(selectedItemIndex);
     }
+
 }
