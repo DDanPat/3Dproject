@@ -7,7 +7,8 @@ public enum ItemType
 {
     Equipable,
     Consumable,
-    Resource
+    Resource,
+    Buff
 }
 
 public enum ConsumableType
@@ -16,10 +17,22 @@ public enum ConsumableType
     Hunger
 }
 
+public enum BuffType
+{
+    Speed
+}
+
 [Serializable]
 public class ItemDataConsumable
 {
     public ConsumableType type;
+    public float value;
+}
+
+[Serializable]
+public class ItemDataBuff
+{
+    public BuffType type;
     public float value;
 }
 
@@ -40,6 +53,10 @@ public class ItemData : ScriptableObject
 
     [Header("Consumable")]
     public ItemDataConsumable[] consumables;
+
+    [Header("Buff")]
+    public ItemDataBuff[] buffs;
+    public float buffTime;
 
     [Header("Equip")]
     public GameObject equipPrefab;

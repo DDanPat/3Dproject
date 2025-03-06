@@ -58,4 +58,18 @@ public class PlayerCondition : MonoBehaviour, IDamagable
         health.Subtract(damageAmount);
         onTakeDamage?.Invoke();
     }
+
+    public void TakeBuff(float amount, float buffTime)
+    {
+        StartCoroutine(BuffTimer(buffTime));
+    }
+
+    IEnumerator BuffTimer(float time)
+    {
+        CharacterManager.Instance.Player.controller.moveSpeed = 10;
+
+        yield return new WaitForSeconds(time);
+
+        CharacterManager.Instance.Player.controller.moveSpeed = 5;
+    }
 }
