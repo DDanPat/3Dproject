@@ -8,10 +8,14 @@ public class PlayerController : MonoBehaviour
 {
     [Header("Movement")]
     public float moveSpeed;
+    public float walkSpeed;
+    public float runSpeed;
+    private bool isRuning = false;
     private Vector2 curMovementInput;
     public float jumpPower;
     public LayerMask groundLayerMask;
     public float jumpStamina;
+    public float runStamina;
 
     [Header("Look")]
     public Transform cameraContainer;
@@ -76,6 +80,21 @@ public class PlayerController : MonoBehaviour
             {
                 _rigidbody.AddForce(Vector2.up * jumpPower, ForceMode.Impulse);
             } 
+        }
+    }
+
+    public void OnRunInput(InputAction.CallbackContext context)
+    {
+        if (context.phase == InputActionPhase.Performed)
+        {
+            if (CharacterManager.Instance.Player.condition.UseStamina(runStamina) && curMovementInput != Vector2.zero)
+            {
+                moveSpeed = runSpeed;
+            }
+        }
+        else if (context.phase == InputActionPhase.Canceled || curMovementInput == Vector2.zero)
+        {
+            moveSpeed = walkSpeed;
         }
     }
 

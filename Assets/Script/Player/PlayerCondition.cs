@@ -69,4 +69,5 @@ public class PlayerCondition : MonoBehaviour, IDamagable
         stamina.Subtract(amount);
         return true;
     }
+
 }
