@@ -30,7 +30,7 @@ public class PlayerController : MonoBehaviour
     [HideInInspector]
     public bool canLook = true;
 
-    bool isUsejump = false;
+    bool isUsejumpPad = false;
     private Rigidbody _rigidbody;
 
     private void Awake()
@@ -108,7 +108,7 @@ public class PlayerController : MonoBehaviour
 
     private void Move()
     {
-        if (isUsejump) return;
+        if (isUsejumpPad) return;
         Vector3 dir = transform.forward * curMovementInput.y + transform.right * curMovementInput.x;
         dir *= moveSpeed;
         dir.y = _rigidbody.velocity.y;
@@ -139,7 +139,7 @@ public class PlayerController : MonoBehaviour
         {
             if (Physics.Raycast(rays[i], 0.1f, groundLayerMask))
             {
-                isUsejump = false;
+                isUsejumpPad = false;
                 return true;
             }
         }
@@ -177,7 +177,7 @@ public class PlayerController : MonoBehaviour
         }
         else if (type == JumpType.forward)
         {
-            isUsejump = true;
+            isUsejumpPad = true;
             Vector3 jumpDirection = ((transform.forward + Vector3.up) * 10).normalized;
             _rigidbody.AddForce(jumpDirection * jumpValue, ForceMode.Impulse);
         }
