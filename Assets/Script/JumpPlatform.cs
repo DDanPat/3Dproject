@@ -5,28 +5,47 @@ using UnityEngine;
 public enum JumpType
 {
     Up,
-    foward
+    forward
 }
 
-public class JumpPlatform : MonoBehaviour
+public class JumpPlatform : MonoBehaviour, IInteractable
 {
     public JumpType jumpType;
-    private float jumpPadPower;
+    public float jumpPadPower;
 
-    private void Start()
+    public string jumpPadName;
+    public string info;
+
+    bool OnJumpPad = false;
+
+
+    private void Update()
     {
-        switch (jumpType)
+        if (OnJumpPad &&Input.GetKeyDown(KeyCode.E))
         {
-            case JumpType.Up:
-                jumpPadPower = 300f;
-                break;
-            case JumpType.foward:
-                break;
+            CharacterManager.Instance.Player.controller.JumpPad(jumpPadPower, jumpType);
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionEnter(Collision _collision)
     {
-        CharacterManager.Instance.Player.controller.JumpPad(jumpPadPower);
+        OnJumpPad = true;
+        // 상호작용 키를 눌러 작동 이라는 안내말 출력
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        OnJumpPad = false ;
+    }
+
+    public string GetInteractPrompt()
+    {
+        string str = $"{jumpPadName}\n{info}";
+        return str;
+    }
+
+    public void OnInteract()
+    {
+        return;
     }
 }
