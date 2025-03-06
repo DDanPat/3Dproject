@@ -46,6 +46,12 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         Move();
+        if (isRuning && curMovementInput != Vector2.zero)
+        {
+            CharacterManager.Instance.Player.condition.UseStamina(runStamina);
+            moveSpeed = runSpeed;
+        }    
+        else moveSpeed = walkSpeed;
     }
 
     private void LateUpdate()
@@ -89,14 +95,14 @@ public class PlayerController : MonoBehaviour
     {
         if (context.phase == InputActionPhase.Performed)
         {
-            if (CharacterManager.Instance.Player.condition.UseStamina(runStamina) && curMovementInput != Vector2.zero)
+            if (CharacterManager.Instance.Player.condition.UseStamina(runStamina))
             {
-                moveSpeed = runSpeed;
+                isRuning = true;
             }
         }
-        else if (context.phase == InputActionPhase.Canceled || curMovementInput == Vector2.zero)
+        else if (context.phase == InputActionPhase.Canceled)
         {
-            moveSpeed = walkSpeed;
+            isRuning = false;
         }
     }
 

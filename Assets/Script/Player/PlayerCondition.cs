@@ -59,6 +59,16 @@ public class PlayerCondition : MonoBehaviour, IDamagable
         onTakeDamage?.Invoke();
     }
 
+    public bool UseStamina(float value)
+    {
+        if (stamina.curValue - value > 0f)
+        {
+            stamina.Subtract(value);
+            return true;
+        }
+        return false;
+    }
+
     public void TakeBuff(float amount, float buffTime)
     {
         StartCoroutine(BuffTimer(buffTime));
