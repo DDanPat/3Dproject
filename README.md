@@ -1,6 +1,6 @@
 <div align="center">
 
-# SpartanArcher
+# Sparta 3D Project
 스파르타 내일배움캠프에서 Unity 3D project 기능을 익히기 위해 진행한 프로젝트입니다.
 
 </div>
