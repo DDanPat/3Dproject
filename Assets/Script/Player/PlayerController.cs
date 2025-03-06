@@ -171,16 +171,21 @@ public class PlayerController : MonoBehaviour
 
     public void JumpPad(float jumpValue, JumpType type)
     {
-        if (type == JumpType.Up)
+        Vector3 jumpDirection = Vector3.zero; // 기본값 (0,0,0)
+
+        switch (type)
         {
-            _rigidbody.AddForce(Vector3.up * jumpValue, ForceMode.Impulse);
+            case JumpType.Up:
+                jumpDirection = Vector3.up;
+                break;
+
+            case JumpType.forward:
+                isUsejumpPad = true;
+                jumpDirection = (transform.forward + Vector3.up).normalized;
+                break;
         }
-        else if (type == JumpType.forward)
-        {
-            isUsejumpPad = true;
-            Vector3 jumpDirection = ((transform.forward + Vector3.up) * 10).normalized;
-            _rigidbody.AddForce(jumpDirection * jumpValue, ForceMode.Impulse);
-        }
+
+        _rigidbody.AddForce(jumpDirection * jumpValue, ForceMode.Impulse);
     }
 
     
