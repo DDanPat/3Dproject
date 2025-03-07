@@ -20,7 +20,8 @@ public enum ConsumableType
 public enum BuffType
 {
     Speed,
-    Jump
+    Jump,
+    DoubleJump
 }
 
 [Serializable]

@@ -13,8 +13,8 @@ public class PlayerController : MonoBehaviour
     private bool isRuning = false;
     private Vector2 curMovementInput;
     public float jumpPower;
-    public int jumpCount;
-    public int curJumpCount;
+    public float jumpCount;
+    public float curJumpCount;
     public LayerMask groundLayerMask;
     public float jumpStamina;
     public float runStamina;

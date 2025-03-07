@@ -210,7 +210,9 @@ public class UIInventory : MonoBehaviour
                         CharacterManager.Instance.Player.buffTimer.StartBuff(selectedItem.icon, selectedItem.buffTime, selectedItem.buffs[i].value, selectedItem.buffs[i].type);
                         break;
                     case BuffType.Jump:
-                        //condition.TakeBuff(selectedItem.buffs[i].value, selectedItem.buffTime, selectedItem.icon, selectedItem.buffs[i].type);
+                        CharacterManager.Instance.Player.buffTimer.StartBuff(selectedItem.icon, selectedItem.buffTime, selectedItem.buffs[i].value, selectedItem.buffs[i].type);
+                        break;
+                    case BuffType.DoubleJump:                      
                         CharacterManager.Instance.Player.buffTimer.StartBuff(selectedItem.icon, selectedItem.buffTime, selectedItem.buffs[i].value, selectedItem.buffs[i].type);
                         break;
 

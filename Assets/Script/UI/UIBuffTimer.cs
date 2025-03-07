@@ -97,6 +97,9 @@ public class UIBuffTimer : MonoBehaviour
             case BuffType.Jump:
                 CharacterManager.Instance.Player.controller.jumpPower += amount;
                 break;
+            case BuffType.DoubleJump:
+                CharacterManager.Instance.Player.controller.jumpCount += amount;
+                break;
         }
     }
 
@@ -111,6 +114,9 @@ public class UIBuffTimer : MonoBehaviour
                 break;
             case BuffType.Jump:
                 CharacterManager.Instance.Player.controller.jumpPower -= amount;
+                break;
+            case BuffType.DoubleJump:
+                CharacterManager.Instance.Player.controller.jumpCount -= amount;
                 break;
         }
     }
