@@ -10,6 +10,7 @@ public class Condition : MonoBehaviour
     public float startValue;
     public float passiveValue;
     public Image uiBar;
+    public GameObject StatBar;
 
     private void Start()
     {
@@ -19,6 +20,7 @@ public class Condition : MonoBehaviour
     private void Update()
     {
         uiBar.fillAmount = GetPercentage();
+        SetUI();
     }
 
     public void Add(float value)
@@ -36,5 +38,34 @@ public class Condition : MonoBehaviour
     public float GetPercentage()
     {
         return curValue / maxValue;
+    }
+
+    public void ColorChange()
+    {
+        if (CharacterManager.Instance.Player.condition.uiCondition.stamina.uiBar.fillAmount > 0.7)
+        {
+            CharacterManager.Instance.Player.condition.uiCondition.stamina.uiBar.color = new Color(255, 255, 255);
+        }
+        else if (CharacterManager.Instance.Player.condition.uiCondition.stamina.uiBar.fillAmount > 0.4)
+        {
+            CharacterManager.Instance.Player.condition.uiCondition.stamina.uiBar.color = new Color(255, 255, 0);
+        }
+        else
+        {
+            CharacterManager.Instance.Player.condition.uiCondition.stamina.uiBar.color = new Color(255, 0, 0);
+        }
+    }
+
+    public void SetUI()
+    {
+        if (CharacterManager.Instance.Player.condition.uiCondition.stamina.curValue == CharacterManager.Instance.Player.condition.uiCondition.stamina.maxValue)
+        {
+            CharacterManager.Instance.Player.condition.uiCondition.stamina.StatBar.SetActive(false);
+        }
+        else
+        {
+            CharacterManager.Instance.Player.condition.uiCondition.stamina.StatBar.SetActive(true);
+            ColorChange();
+        }
     }
 }
