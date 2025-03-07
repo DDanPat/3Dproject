@@ -13,6 +13,8 @@ public class PlayerController : MonoBehaviour
     private bool isRuning = false;
     private Vector2 curMovementInput;
     public float jumpPower;
+    public int jumpCount;
+    public int curJumpCount;
     public LayerMask groundLayerMask;
     public float jumpStamina;
     public float runStamina;
@@ -41,6 +43,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
+        curJumpCount = jumpCount;
     }
 
     private void FixedUpdate()
@@ -87,6 +90,7 @@ public class PlayerController : MonoBehaviour
             if (CharacterManager.Instance.Player.condition.UseStamina(jumpStamina))
             {
                 _rigidbody.AddForce(Vector2.up * jumpPower, ForceMode.Impulse);
+                curJumpCount--;
             } 
         }
     }
@@ -140,8 +144,14 @@ public class PlayerController : MonoBehaviour
             if (Physics.Raycast(rays[i], 0.1f, groundLayerMask))
             {
                 isUsejumpPad = false;
+                curJumpCount = jumpCount;
                 return true;
             }
+        }
+
+        if (curJumpCount > 0)
+        {
+            return true;
         }
 
         return false;
