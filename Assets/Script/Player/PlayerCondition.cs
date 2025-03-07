@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 // 데미지를 받을 때 필요한 인터페이스
 // 어느 곳에서 사용 가능
@@ -69,17 +70,18 @@ public class PlayerCondition : MonoBehaviour, IDamagable
         return false;
     }
 
-    public void TakeBuff(float amount, float buffTime)
+    public void TakeBuff(float amount, float buffTime, Sprite icon)
     {
-        StartCoroutine(BuffTimer(buffTime));
+        //StartCoroutine(BuffTimer(amount, buffTime));
+        CharacterManager.Instance.Player.buffTimer.StartBuff(icon, buffTime, amount);
     }
 
-    IEnumerator BuffTimer(float time)
-    {
-        CharacterManager.Instance.Player.controller.moveSpeed = 10;
+    //IEnumerator BuffTimer(float amount, float time)
+    //{
+    //    CharacterManager.Instance.Player.controller.moveSpeed = CharacterManager.Instance.Player.controller.moveSpeed + amount;
 
-        yield return new WaitForSeconds(time);
+    //    yield return new WaitForSeconds(time);
 
-        CharacterManager.Instance.Player.controller.moveSpeed = 5;
-    }
+    //    CharacterManager.Instance.Player.controller.moveSpeed = CharacterManager.Instance.Player.controller.moveSpeed - amount;
+    //}
 }

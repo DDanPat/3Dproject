@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UIInventory : MonoBehaviour
 {
@@ -178,7 +179,7 @@ public class UIInventory : MonoBehaviour
             selectedStatValue.text += selectedItem.consumables[i].value.ToString() + "\n";
         }
 
-        useButton.SetActive(selectedItem.type == ItemType.Consumable);
+        useButton.SetActive(selectedItem.type == ItemType.Consumable || selectedItem.type == ItemType.Buff);
         equipButton.SetActive(selectedItem.type == ItemType.Equipable && !slots[index].equipped);
         unequipButton.SetActive(selectedItem.type == ItemType.Equipable && slots[index].equipped);
         dropButton.SetActive(true);
@@ -186,7 +187,7 @@ public class UIInventory : MonoBehaviour
 
     public void OnUseButton()
     {
-        if(selectedItem.type == ItemType.Consumable)
+        if(selectedItem.type == ItemType.Consumable || selectedItem.type == ItemType.Buff)
         {
             for(int i = 0; i < selectedItem.consumables.Length; i++)
             {
@@ -206,7 +207,7 @@ public class UIInventory : MonoBehaviour
                 {
                     case BuffType.Speed:
                         //코루틴을 이용해서 일정 시간동안 스피드 증가
-                        condition.TakeBuff(selectedItem.buffs[i].value, selectedItem.buffTime);
+                        condition.TakeBuff(selectedItem.buffs[i].value, selectedItem.buffTime, selectedItem.icon);
                         break;
                 }
             }

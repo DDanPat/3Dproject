@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
     public PlayerController controller;
     public PlayerCondition condition;
     public Equipment equip;
+    public UIBuffTimer buffTimer;
 
 
     public ItemData itemData;
@@ -20,5 +21,6 @@ public class Player : MonoBehaviour
         controller = GetComponent<PlayerController>();
         condition = GetComponent<PlayerCondition>();
         equip = GetComponent<Equipment>();
+        buffTimer = GetComponent<UIBuffTimer>();
     }
 }
