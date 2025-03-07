@@ -70,10 +70,10 @@ public class PlayerCondition : MonoBehaviour, IDamagable
         return false;
     }
 
-    public void TakeBuff(float amount, float buffTime, Sprite icon)
+    public void TakeBuff(float amount, float buffTime, Sprite icon, BuffType type)
     {
         //StartCoroutine(BuffTimer(amount, buffTime));
-        CharacterManager.Instance.Player.buffTimer.StartBuff(icon, buffTime, amount);
+        CharacterManager.Instance.Player.buffTimer.StartBuff(icon, buffTime, amount, type);
     }
 
     //IEnumerator BuffTimer(float amount, float time)

@@ -206,9 +206,14 @@ public class UIInventory : MonoBehaviour
                 switch (selectedItem.buffs[i].type)
                 {
                     case BuffType.Speed:
-                        //코루틴을 이용해서 일정 시간동안 스피드 증가
-                        condition.TakeBuff(selectedItem.buffs[i].value, selectedItem.buffTime, selectedItem.icon);
+                        //condition.TakeBuff(selectedItem.buffs[i].value, selectedItem.buffTime, selectedItem.icon, selectedItem.buffs[i].type);
+                        CharacterManager.Instance.Player.buffTimer.StartBuff(selectedItem.icon, selectedItem.buffTime, selectedItem.buffs[i].value, selectedItem.buffs[i].type);
                         break;
+                    case BuffType.Jump:
+                        //condition.TakeBuff(selectedItem.buffs[i].value, selectedItem.buffTime, selectedItem.icon, selectedItem.buffs[i].type);
+                        CharacterManager.Instance.Player.buffTimer.StartBuff(selectedItem.icon, selectedItem.buffTime, selectedItem.buffs[i].value, selectedItem.buffs[i].type);
+                        break;
+
                 }
             }
             RemoveSelectedItem();

@@ -24,4 +24,4 @@ MonoBehaviour:
   - type: 0
     value: 5
   buffTime: 5
-  equipPrefab: {fileID: 5351609552506793493, guid: 7a62474719325a84e934790b0f6cf26b, type: 3}
+  equipPrefab: {fileID: 0}

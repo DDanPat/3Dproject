@@ -8,6 +8,7 @@ public class UIBuffTimer : MonoBehaviour
     public Image[] buffUI;
     private Coroutine[] activeBuffCoroutines;
 
+
     private void Start()
     {
         activeBuffCoroutines = new Coroutine[buffUI.Length]; // 각 버프 UI에 대한 코루틴 배열 초기화
@@ -28,8 +29,15 @@ public class UIBuffTimer : MonoBehaviour
         }
     }
 
-    public void StartBuff(Sprite icon, float buffTime, float amount)
+    public void StartBuff(Sprite icon, float buffTime, float amount, BuffType type)
     {
+        switch (type)
+        {
+            case BuffType.Speed:
+                break;
+            case BuffType.Jump:
+                break;
+        }
         for (int i = 0; i < buffUI.Length; i++)
         {
             if (buffUI[i].sprite == icon)
@@ -38,11 +46,11 @@ public class UIBuffTimer : MonoBehaviour
                 if (activeBuffCoroutines[i] != null)
                 {
                     StopCoroutine(activeBuffCoroutines[i]);
-                    endSpeedBuff(amount);
+                    EndBuff(amount, type);
                 }
 
-                TakeSpeedBuff(amount);
-                activeBuffCoroutines[i] = StartCoroutine(BuffTimer(amount, buffTime, i));
+                TakeBuff(amount, type);
+                activeBuffCoroutines[i] = StartCoroutine(BuffTimer(amount, buffTime, i, type));
                 return;
             }
             else
@@ -50,14 +58,14 @@ public class UIBuffTimer : MonoBehaviour
                 if (buffUI[i].sprite == null)
                 {
                     buffUI[i].sprite = icon;
-                    activeBuffCoroutines[i] = StartCoroutine(BuffTimer(amount, buffTime, i));
-                    TakeSpeedBuff(amount);
+                    activeBuffCoroutines[i] = StartCoroutine(BuffTimer(amount, buffTime, i, type));
+                    TakeBuff(amount, type);
                     return;
                 }
             }
         }
     }
-    IEnumerator BuffTimer(float amount, float time, int indexNum)
+    IEnumerator BuffTimer(float amount, float time, int indexNum, BuffType type)
     {
         buffUI[indexNum].type = Image.Type.Filled;
         buffUI[indexNum].fillAmount = 1;
@@ -73,21 +81,37 @@ public class UIBuffTimer : MonoBehaviour
         }
 
 
-        endSpeedBuff(amount);
+        EndBuff(amount, type);
         buffUI[(indexNum)].sprite = null;
     }
 
-    void TakeSpeedBuff(float amount)
+    void TakeBuff(float amount, BuffType type)
     {
-        CharacterManager.Instance.Player.controller.moveSpeed += amount;
-        CharacterManager.Instance.Player.controller.runSpeed += amount;
-        CharacterManager.Instance.Player.controller.walkSpeed += amount;
+        switch (type)
+        {
+            case BuffType.Speed:
+                CharacterManager.Instance.Player.controller.moveSpeed += amount;
+                CharacterManager.Instance.Player.controller.runSpeed += amount;
+                CharacterManager.Instance.Player.controller.walkSpeed += amount;
+                break;
+            case BuffType.Jump:
+                CharacterManager.Instance.Player.controller.jumpPower += amount;
+                break;
+        }
     }
 
-    void endSpeedBuff(float amount)
+    void EndBuff(float amount, BuffType type)
     {
-        CharacterManager.Instance.Player.controller.moveSpeed -= amount;
-        CharacterManager.Instance.Player.controller.runSpeed -= amount;
-        CharacterManager.Instance.Player.controller.walkSpeed -= amount;
+        switch (type)
+        {
+            case BuffType.Speed:
+                CharacterManager.Instance.Player.controller.moveSpeed -= amount;
+                CharacterManager.Instance.Player.controller.runSpeed -= amount;
+                CharacterManager.Instance.Player.controller.walkSpeed -= amount;
+                break;
+            case BuffType.Jump:
+                CharacterManager.Instance.Player.controller.jumpPower -= amount;
+                break;
+        }
     }
 }
