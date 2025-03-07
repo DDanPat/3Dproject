@@ -23,5 +23,5 @@ MonoBehaviour:
   buffs:
   - type: 0
     value: 5
-  buffTime: 5
+  buffTime: 10
   equipPrefab: {fileID: 0}
