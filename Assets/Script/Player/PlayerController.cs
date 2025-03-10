@@ -32,7 +32,7 @@ public class PlayerController : MonoBehaviour
     [HideInInspector]
     public bool canLook = true;
 
-    bool isUsejumpPad = false;
+    public bool isUseObject = false;
     private Rigidbody _rigidbody;
 
     private void Awake()
@@ -55,6 +55,7 @@ public class PlayerController : MonoBehaviour
             moveSpeed = runSpeed;
         }    
         else moveSpeed = walkSpeed;
+        Debug.Log(isUseObject);
     }
 
     private void LateUpdate()
@@ -112,7 +113,7 @@ public class PlayerController : MonoBehaviour
 
     private void Move()
     {
-        if (isUsejumpPad) return;
+        if (isUseObject) return;
         Vector3 dir = transform.forward * curMovementInput.y + transform.right * curMovementInput.x;
         dir *= moveSpeed;
         dir.y = _rigidbody.velocity.y;
@@ -143,7 +144,7 @@ public class PlayerController : MonoBehaviour
         {
             if (Physics.Raycast(rays[i], 0.1f, groundLayerMask))
             {
-                isUsejumpPad = false;
+                isUseObject = false;
                 curJumpCount = jumpCount;
                 return true;
             }
@@ -190,13 +191,27 @@ public class PlayerController : MonoBehaviour
                 break;
 
             case JumpType.forward:
-                isUsejumpPad = true;
+                isUseObject = true;
                 jumpDirection = (transform.forward + Vector3.up).normalized;
                 break;
         }
 
         _rigidbody.AddForce(jumpDirection * jumpValue, ForceMode.Impulse);
     }
+    //사다리 올라가기
+    public void UseLandder()
+    {
+        Ray ray = new Ray(transform.position, transform.forward);
 
-    
+        RaycastHit hit;
+
+        if (Physics.Raycast(ray, out hit, 1f))
+        {
+            if (curMovementInput.y > 0)
+            {
+                _rigidbody.velocity = new Vector3(0, moveSpeed, 0);
+            }
+        }
+
+    }
 }
