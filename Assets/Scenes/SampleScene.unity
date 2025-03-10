@@ -207,7 +207,7 @@ Transform:
   m_GameObject: {fileID: 16787651}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 22.8, y: 8.11, z: 14.22}
+  m_LocalPosition: {x: 5.65, y: 1.14, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -420,6 +420,7 @@ MonoBehaviour:
   condition: {fileID: 0}
   equip: {fileID: 0}
   buffTimer: {fileID: 0}
+  aniContoller: {fileID: 0}
   itemData: {fileID: 0}
   dropPosition: {fileID: 1045310008}
 --- !u!114 &16787658
@@ -8053,7 +8054,7 @@ Animator:
   m_GameObject: {fileID: 2030079489763038170}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: c207202fdaf327549a88f878a897e0ab, type: 3}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 2e2130bbf520cb5428a93212f29b5e05, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 1

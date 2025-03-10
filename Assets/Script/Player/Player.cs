@@ -9,6 +9,7 @@ public class Player : MonoBehaviour
     public PlayerCondition condition;
     public Equipment equip;
     public UIBuffTimer buffTimer;
+    public AnimationContoller aniContoller;
 
 
     public ItemData itemData;
@@ -22,5 +23,6 @@ public class Player : MonoBehaviour
         condition = GetComponent<PlayerCondition>();
         equip = GetComponent<Equipment>();
         buffTimer = GetComponent<UIBuffTimer>();
+        aniContoller = GetComponent<AnimationContoller>();
     }
 }

@@ -34,10 +34,13 @@ public class PlayerController : MonoBehaviour
 
     public bool isUseObject = false;
     private Rigidbody _rigidbody;
+    private Animator _animator;
+
 
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody>();
+        _animator = GetComponentInChildren<Animator>();
     }
 
     void Start()
@@ -55,6 +58,8 @@ public class PlayerController : MonoBehaviour
             moveSpeed = runSpeed;
         }    
         else moveSpeed = walkSpeed;
+
+        _animator.SetBool("isRunning", isRuning && curMovementInput != Vector2.zero);
         Debug.Log(isUseObject);
     }
 
@@ -82,6 +87,7 @@ public class PlayerController : MonoBehaviour
         {
             curMovementInput = Vector2.zero;
         }
+        _animator.SetBool("isMoving", curMovementInput != Vector2.zero);
     }
 
     public void OnJumpInput(InputAction.CallbackContext context)
