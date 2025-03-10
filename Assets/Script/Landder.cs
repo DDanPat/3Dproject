@@ -14,17 +14,18 @@ public class Landder : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
         useLandder = true;
         CharacterManager.Instance.Player.controller.isUseObject = true;
     }
 
-    private void OnCollisionExit(Collision collision)
+    private void OnTriggerExit(Collider other)
     {
         useLandder = false;
         CharacterManager.Instance.Player.controller.isUseObject = false;
         CharacterManager.Instance.Player.controller.UseGrabity();
     }
+
 
 }

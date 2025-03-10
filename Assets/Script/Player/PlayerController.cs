@@ -198,6 +198,9 @@ public class PlayerController : MonoBehaviour
 
         _rigidbody.AddForce(jumpDirection * jumpValue, ForceMode.Impulse);
     }
+
+    
+
     //사다리 올라가기
     public void UseLandder()
     {
