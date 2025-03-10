@@ -207,11 +207,25 @@ public class PlayerController : MonoBehaviour
 
         if (Physics.Raycast(ray, out hit, 1f))
         {
+            _rigidbody.useGravity = false;
             if (curMovementInput.y > 0)
             {
-                _rigidbody.velocity = new Vector3(0, moveSpeed, 0);
+                _rigidbody.velocity = new Vector3(0, moveSpeed * 0.5f, 0);
+            }
+            else if (curMovementInput.y < 0)
+            {
+                _rigidbody.velocity = new Vector3(0, -moveSpeed * 0.5f, 0);
+            }
+            else
+            {
+                _rigidbody.velocity = Vector3.zero;
             }
         }
 
+    }
+
+    public void UseGrabity()
+    {
+        _rigidbody.useGravity = true ;
     }
 }

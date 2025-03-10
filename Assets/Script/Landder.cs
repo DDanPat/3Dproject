@@ -24,6 +24,7 @@ public class Landder : MonoBehaviour
     {
         useLandder = false;
         CharacterManager.Instance.Player.controller.isUseObject = false;
+        CharacterManager.Instance.Player.controller.UseGrabity();
     }
 
 }
