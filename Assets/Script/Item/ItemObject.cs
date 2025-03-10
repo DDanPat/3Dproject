@@ -14,7 +14,7 @@ public class ItemObject : MonoBehaviour, IInteractable
 
     public string GetInteractPrompt()
     {
-        string str = $"{data.displayName}\n{data.description}";
+        string str = $"[E]눌러 줍기\n{data.displayName}\n{data.description}";
         return str;
     }
 

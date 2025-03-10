@@ -56,6 +56,7 @@ public class Intercation : MonoBehaviour
         promptText.text = curInteractable.GetInteractPrompt();
     }
 
+
     public void OnInteractInput(InputAction.CallbackContext context)
     {
         if( context.phase == InputActionPhase.Started && curInteractable != null)

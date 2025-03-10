@@ -40,7 +40,7 @@ public class JumpPlatform : MonoBehaviour, IInteractable
 
     public string GetInteractPrompt()
     {
-        string str = $"{jumpPadName}\n{info}";
+        string str = $"[E]눌러 사용하기\n{jumpPadName}\n{info}";
         return str;
     }
 
