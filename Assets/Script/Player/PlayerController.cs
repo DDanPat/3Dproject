@@ -210,25 +210,19 @@ public class PlayerController : MonoBehaviour
     //사다리 올라가기
     public void UseLandder()
     {
-        Ray ray = new Ray(transform.position, transform.forward);
+        _rigidbody.useGravity = false;
 
-        RaycastHit hit;
-
-        if (Physics.Raycast(ray, out hit, 1f))
+        if (curMovementInput.y > 0)
         {
-            _rigidbody.useGravity = false;
-            if (curMovementInput.y > 0)
-            {
-                _rigidbody.velocity = new Vector3(0, moveSpeed * 0.5f, 0);
-            }
-            else if (curMovementInput.y < 0)
-            {
-                _rigidbody.velocity = new Vector3(0, -moveSpeed * 0.5f, 0);
-            }
-            else
-            {
-                _rigidbody.velocity = Vector3.zero;
-            }
+            _rigidbody.velocity = new Vector3(0, moveSpeed * 0.5f, 0);
+        }
+        else if (curMovementInput.y < 0)
+        {
+            _rigidbody.velocity = new Vector3(0, -moveSpeed * 0.5f, 0);
+        }
+        else
+        {
+            _rigidbody.velocity = Vector3.zero;
         }
 
     }
