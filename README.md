@@ -47,6 +47,7 @@
 ## 주요 기능
 
 ### 버프 아이템
+[당근 : 점프 높이 증가], [사과 : 이속 증가], [바나나 : 더블 점프 가능]으로 각각
 ![GR1](https://github.com/DDanPat/3Dproject/blob/main/ReadMeFiles/GR1.gif)
 
 
