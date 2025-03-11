@@ -78,7 +78,7 @@
 1️⃣ 점프대
 - **문제**: 포물선으로 날아가는 발사대를 사용했을 때 플레이어가 앞으로 날가지 않고 위로만 뛰는 문제가 있었습니다.
 - **원인**: 플레이어 이동 로직에서 Move()메서드(플레이어가 움직이지 않을 때 Vector.zero로 설정)가 Update에서 계속 호출되어 발생한 문제였습니다.
-- **해결**: bool 값을 이용하여 점프대를 사용 여부를 확인하고 사용하고 있을 때는 return을 하여 Move()메서드의 호출을 방지하였습니다.
+- **해결**: bool 값을 이용하여 점프대를 사용 여부를 확인하고 사용하고 있을 때는 return을 하여 Move()메서드의 호출을 방지하였습니다.   
 ![TroubleShooting1](https://github.com/DDanPat/3Dproject/blob/main/ReadMeFiles/TroubleShooting1.png)
 
 
