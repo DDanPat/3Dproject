@@ -210,7 +210,6 @@ public class UIInventory : MonoBehaviour
                 switch (selectedItem.buffs[i].type)
                 {
                     case BuffType.Speed:
-                        //condition.TakeBuff(selectedItem.buffs[i].value, selectedItem.buffTime, selectedItem.icon, selectedItem.buffs[i].type);
                         CharacterManager.Instance.Player.buffTimer.StartBuff(selectedItem.icon, selectedItem.buffTime, selectedItem.buffs[i].value, selectedItem.buffs[i].type);
                         break;
                     case BuffType.Jump:

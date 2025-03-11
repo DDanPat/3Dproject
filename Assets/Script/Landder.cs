@@ -4,10 +4,9 @@ using UnityEngine;
 
 public class Landder : MonoBehaviour
 {
-    bool useLandder = false;
+    bool useLandder = false; // 사다리 사용 여부
     private void Update()
     {
-        Debug.Log("useLandder" + useLandder);
         if (useLandder)
         {
             CharacterManager.Instance.Player.controller.UseLandder();

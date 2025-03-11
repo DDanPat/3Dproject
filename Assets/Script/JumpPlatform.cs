@@ -16,7 +16,7 @@ public class JumpPlatform : MonoBehaviour, IInteractable
     public string jumpPadName;
     public string info;
 
-    bool OnJumpPad = false;
+    bool OnJumpPad = false; // 점프대 사용여부
 
 
     private void Update()
@@ -30,7 +30,6 @@ public class JumpPlatform : MonoBehaviour, IInteractable
     private void OnCollisionEnter(Collision _collision)
     {
         OnJumpPad = true;
-        // 상호작용 키를 눌러 작동 이라는 안내말 출력
     }
 
     private void OnCollisionExit(Collision collision)

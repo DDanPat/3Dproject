@@ -10,11 +10,11 @@ public class PlayerController : MonoBehaviour
     public float moveSpeed;
     public float walkSpeed;
     public float runSpeed;
-    private bool isRuning = false;
+    private bool isRuning = false; // 달리기 사용 여부
     private Vector2 curMovementInput;
     public float jumpPower;
-    public float jumpCount;
-    public float curJumpCount;
+    public float jumpCount; // 점프 횟수
+    public float curJumpCount; // 점프 사용 남은 횟수
     public LayerMask groundLayerMask;
     public float jumpStamina;
     public float runStamina;
@@ -186,6 +186,7 @@ public class PlayerController : MonoBehaviour
         canLook = !toggle;
     }
 
+    //점프대 type 별로 위로 점프하는 힘을 부여하거나 플레이어가 바라보는 방향으로 힘을 부여
     public void JumpPad(float jumpValue, JumpType type)
     {
         Vector3 jumpDirection = Vector3.zero; // 기본값 (0,0,0)
@@ -207,26 +208,27 @@ public class PlayerController : MonoBehaviour
 
     
 
-    //사다리 올라가기
+    //사다리 사용
     public void UseLandder()
     {
         _rigidbody.useGravity = false;
 
-        if (curMovementInput.y > 0)
+        if (curMovementInput.y > 0) // 올라가기
         {
             _rigidbody.velocity = new Vector3(0, moveSpeed * 0.5f, 0);
         }
-        else if (curMovementInput.y < 0)
+        else if (curMovementInput.y < 0) // 내려가기
         {
             _rigidbody.velocity = new Vector3(0, -moveSpeed * 0.5f, 0);
         }
-        else
+        else // 중간에 매달리기
         {
             _rigidbody.velocity = Vector3.zero;
         }
 
     }
 
+    //중력 부여
     public void UseGrabity()
     {
         _rigidbody.useGravity = true ;

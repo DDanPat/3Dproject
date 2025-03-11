@@ -17,7 +17,8 @@ public enum ConsumableType
     Hunger
 }
 
-public enum BuffType
+// 버프 종류
+public enum BuffType 
 {
     Speed,
     Jump,
