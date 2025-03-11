@@ -11,12 +11,12 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Player
+  - Interactable
+  - Equip
+  - Resource
+  - JumpPad
+  - Landder
   - 
   - 
   - 
