@@ -81,4 +81,9 @@
 - **해결**: bool 값을 이용하여 점프대를 사용 여부를 확인하고 사용하고 있을 때는 return을 하여 Move()메서드의 호출을 방지하였습니다.   
 ![TroubleShooting1](https://github.com/DDanPat/3Dproject/blob/main/ReadMeFiles/TroubleShooting1.png)
 
-
+2️⃣ 버프 아이템 남은 시간 표시시
+- **문제**: 버프가 지속 되고 있을 때 서로 다른 버프를 연속으로 사용했을 때 버프가 제대로 적용 되지 않고 사라지지 않는 문제가 있었습니다.  
+- **원인**: 버프 아이템을 사용하면 기존 작동하는 코루틴을 제거 하고 새로운 버프가 적용 되는 문제였습니다.   
+- **해결**: 코루틴 배열을 만들어 버프마다 작동 되는 코루틴을 구분하여 오류를 방지하였습니다.    
+![TroubleShooting2](https://github.com/DDanPat/3Dproject/blob/main/ReadMeFiles/TroubleShooting2.png)
+![TroubleShooting3](https://github.com/DDanPat/3Dproject/blob/main/ReadMeFiles/TroubleShooting3.png)
