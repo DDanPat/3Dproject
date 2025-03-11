@@ -47,7 +47,7 @@
 ## 주요 기능
 
 ### 버프 아이템
-
+![GR1](https://github.com/DDanPat/3Dproject/blob/main/ReadMeFiles/GR1.gif)
 
 
 ### 점프대
