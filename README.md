@@ -61,8 +61,8 @@
 ![GR2](https://github.com/DDanPat/3Dproject/blob/main/ReadMeFiles/GR2.gif)
 
 ### 사다리
-플레이어가 사다리의 Collider에 닿았을 때 이용 가능합니다.
-[W]키를 누르면 위로 올라가고 [S]키를 누르면 아래로 내려갑니다.
+플레이어가 사다리의 Collider에 닿았을 때 이용 가능합니다.  
+[W]키를 누르면 위로 올라가고 [S]키를 누르면 아래로 내려갑니다.  
 사다리는 Rigidbody의 velocity를 이용하여 플레이어 위치의 변화를 주었습니다.  
 사다리 사용 중에는 플레이어의 중력을 꺼서 사다리에 매달릴 수 있게 하였습니다.  
 ![GR3](https://github.com/DDanPat/3Dproject/blob/main/ReadMeFiles/GR3.gif)
