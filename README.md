@@ -70,7 +70,7 @@
 ### 플레이어 Render Texture
 
 
-
+![GR4](https://github.com/DDanPat/3Dproject/blob/main/ReadMeFiles/GR4.gif)
 
 
 
