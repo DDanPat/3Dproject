@@ -47,6 +47,10 @@ public class UIInventory : MonoBehaviour
             slots[i].index = i;
             slots[i].inventory = this;
         }
+        for (int i = 0; i < slots.Length; i++)
+        {
+            slots[i].Clear();
+        }
 
         ClearSelctedItemWindow();
     }
