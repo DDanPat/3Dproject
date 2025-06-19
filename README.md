@@ -51,6 +51,7 @@
 버프 아이템 사용 시 각각 지속 시간동안 버프를 얻을 수 있습니다.  
 버프 아이템은 인벤토리에서 사용 가능합니다.  
 버프 지속 시간은 왼쪽 상단에 이미지의 fillAmout를 사용하여 남은 시간을 표시 했습니다.  
+
 ![GR1](https://github.com/DDanPat/3Dproject/blob/main/ReadMeFiles/GR1.gif)
 
 
@@ -60,6 +61,7 @@
 [W]키를 누르면 위로 올라가고 [S]키를 누르면 아래로 내려갑니다.  
 사다리는 Rigidbody의 velocity를 이용하여 플레이어 위치의 변화를 주었습니다.  
 사다리 사용 중에는 플레이어의 중력을 꺼서 사다리에 매달릴 수 있게 하였습니다.  
+
 ![GR2](https://github.com/DDanPat/3Dproject/blob/main/ReadMeFiles/GR2.gif)
 
 ### 점프대
